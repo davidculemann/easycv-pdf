@@ -5,3 +5,23 @@ Microservice for generating PDF documents from [easycv](https://www.easycv.verce
 - express server
 - pdfjs-dist for rendering pdfs
 - canvas for creating png thumbnails from pdfs
+
+## Usage
+
+```bash
+pnpm start
+```
+
+## Docker
+
+```bash
+pnpm build
+pnpm start:docker
+```
+
+## Deploy
+
+```bash
+pnpm build
+flyctl deploy
+```
