@@ -136,3 +136,7 @@
 **/.yarn/install-state.gz
 **/.pnp.*
 fly.toml
+
+node_modules
+.git
+.DS_Store

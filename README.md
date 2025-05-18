@@ -9,19 +9,19 @@ Microservice for generating PDF documents from [easycv](https://www.easycv.verce
 ## Usage
 
 ```bash
-pnpm start
+npm run start
 ```
 
 ## Docker
 
 ```bash
-pnpm build
-pnpm start:docker
+npm run build
+npm run start:docker
 ```
 
 ## Deploy
 
 ```bash
-pnpm build
+npm run build
 flyctl deploy
 ```
