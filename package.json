@@ -1,0 +1,16 @@
+{
+  "name": "easycv-pdf",
+  "version": "1.0.0",
+  "description": "Microservice for generating PDF documents and thumbnails from easycv",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "canvas": "^3.1.0",
+    "express": "^4.18.2",
+    "pdfjs-dist": "^3.8.162"
+  },
+  "author": "David Culemann",
+  "license": "ISC"
+}
