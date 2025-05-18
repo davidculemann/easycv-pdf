@@ -34,7 +34,7 @@ app.post("/render", async (req, res) => {
 
 app.get("/healthz", (_req, res) => res.send("OK"));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
 	console.log(`PDF thumbnail service listening on port ${PORT}`);
 });
