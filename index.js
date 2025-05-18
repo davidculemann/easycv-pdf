@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 	res.status(403).json({ error: 'Forbidden' });
 });
 
-app.post("/render", async (req, res) => {
+app.post("/generate-thumbnail", async (req, res) => {
 	try {
 		const pdfData = req.body;
 		const loadingTask = pdfjsLib.getDocument({ data: pdfData });
