@@ -8,7 +8,8 @@
 		"start": "node index.js",
 		"format": "prettier --write .",
 		"build": "docker build -t easycv-pdf .",
-		"start:docker": "docker run -p 8080:8080 easycv-pdf"
+		"start:docker": "docker run -p 8080:8080 easycv-pdf",
+		"deploy": "flyctl deploy"
 	},
 	"dependencies": {
 		"canvas": "^3.1.0",
