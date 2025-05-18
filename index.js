@@ -1,7 +1,7 @@
 import { createCanvas } from "canvas";
 import cors from 'cors';
 import express from "express";
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
+import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 
 const app = express();
 app.use(express.raw({ type: "application/pdf", limit: "10mb" }));
@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 app.post("/generate-thumbnail", async (req, res) => {
 	try {
 		const pdfData = req.body;
-		const loadingTask = pdfjsLib.getDocument({ data: pdfData });
+		const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(pdfData) });
 		const pdfDocument = await loadingTask.promise;
 
 		const page = await pdfDocument.getPage(1);
@@ -55,7 +55,7 @@ app.post("/generate-thumbnail", async (req, res) => {
 		res.send(pngBuffer);
 	} catch (err) {
 		console.error("Render error:", err);
-		res.status(500).json({ error: "Failesd to render PDF" });
+		res.status(500).json({ error: "Failed to render PDF" });
 	}
 });
 
