@@ -1,11 +1,14 @@
 {
 	"name": "easycv-pdf",
+	"type": "module",
 	"version": "1.0.0",
 	"description": "Microservice for generating PDF documents and thumbnails from easycv",
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"build": "docker build -t easycv-pdf .",
+		"start:docker": "docker run -p 8080:8080 easycv-pdf"
 	},
 	"dependencies": {
 		"canvas": "^3.1.0",
