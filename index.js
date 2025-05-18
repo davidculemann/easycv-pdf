@@ -34,12 +34,13 @@ app.use((req, res, next) => {
 
 app.post("/generate-thumbnail", async (req, res) => {
 	try {
-		const pdfData = req.body;
-		const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(pdfData) });
+		const pdfData = new Uint8Array(req.body);
+	  	const loadingTask = pdfjsLib.getDocument({ data: pdfData });
 		const pdfDocument = await loadingTask.promise;
 
 		const page = await pdfDocument.getPage(1);
-		const viewport = page.getViewport({ scale: 1.0 });
+		const scale = 0.3;
+		const viewport = page.getViewport({ scale });
 
 		const canvas = createCanvas(viewport.width, viewport.height);
 		const context = canvas.getContext("2d");
