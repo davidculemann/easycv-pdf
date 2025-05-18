@@ -22,6 +22,24 @@ npm run start:docker
 ## Deploy
 
 ```bash
+cp .env.example .env
+```
+
+sign up for a fly.io account
+
+create a new secret called `FLY_API_KEY` in the fly.io dashboard
+
+copy the secret into the `.env` file
+
+```bash
+brew install flyctl
+```
+
+```bash
+fly auth login
+```
+
+```bash
 npm run build
 flyctl deploy
 ```
