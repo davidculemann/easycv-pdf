@@ -1,41 +1,39 @@
 import { createCanvas } from "canvas";
-import cors from 'cors';
+import cors from "cors";
 import express from "express";
 import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 
 const app = express();
 app.use(express.raw({ type: "application/pdf", limit: "10mb" }));
 
-const allowedOrigins = [
-	'https://easycv.vercel.app',
-	'http://localhost:3000',
-	'https://localhost:3000'
-];
+const allowedOrigins = ["https://easycv.vercel.app", "http://localhost:3000", "https://localhost:3000"];
 
-app.use(cors({
-	origin: function (origin, callback) {
-		if (!origin) return callback(null, true);
-		if (allowedOrigins.includes(origin)) {
-			return callback(null, true);
-		} else {
-			return callback(new Error('Not allowed by CORS'));
-		}
-	}
-}));
+app.use(
+	cors({
+		origin: function (origin, callback) {
+			if (!origin) return callback(null, true);
+			if (allowedOrigins.includes(origin)) {
+				return callback(null, true);
+			} else {
+				return callback(new Error("Not allowed by CORS"));
+			}
+		},
+	}),
+);
 
 app.use((req, res, next) => {
 	const apiKey = process.env.FLY_API_KEY;
 	if (!apiKey) return next();
-	if (req.headers['x-api-key'] === apiKey) {
+	if (req.headers["x-api-key"] === apiKey) {
 		return next();
 	}
-	res.status(403).json({ error: 'Forbidden' });
+	res.status(403).json({ error: "Forbidden" });
 });
 
 app.post("/generate-thumbnail", async (req, res) => {
 	try {
 		const pdfData = new Uint8Array(req.body);
-	  	const loadingTask = pdfjsLib.getDocument({ data: pdfData });
+		const loadingTask = pdfjsLib.getDocument({ data: pdfData });
 		const pdfDocument = await loadingTask.promise;
 
 		const page = await pdfDocument.getPage(1);
