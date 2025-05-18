@@ -4,7 +4,8 @@
   "description": "Microservice for generating PDF documents and thumbnails from easycv",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "canvas": "^3.1.0",
@@ -12,5 +13,8 @@
     "pdfjs-dist": "^3.8.162"
   },
   "author": "David Culemann",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
 }
