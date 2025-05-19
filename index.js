@@ -37,7 +37,7 @@ app.post("/generate-thumbnail", async (req, res) => {
 		const pdfDocument = await loadingTask.promise;
 
 		const page = await pdfDocument.getPage(1);
-		const scale = 0.3;
+		const scale = 0.6;
 		const viewport = page.getViewport({ scale });
 
 		const canvas = createCanvas(viewport.width, viewport.height);
