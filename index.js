@@ -6,7 +6,12 @@ import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 const app = express();
 app.use(express.raw({ type: "application/pdf", limit: "10mb" }));
 
-const allowedOrigins = ["https://easycv.vercel.app", "http://localhost:3000", "https://localhost:3000"];
+const allowedOrigins = [
+	"https://easycv.vercel.app",
+	"https://jobsprout.ai",
+	"http://localhost:3000",
+	"https://localhost:3000",
+];
 
 app.use(
 	cors({
